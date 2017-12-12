@@ -50,6 +50,7 @@ void						error_quit(int e);
 **	Main & loop					| main.c
 */
 
+void						init_b(t_b *b);
 void						loop();
 
 /*
