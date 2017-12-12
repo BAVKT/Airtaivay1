@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   event.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmercadi <vmercadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/10 16:56:39 by vmercadi          #+#    #+#             */
-/*   Updated: 2017/12/10 23:22:27 by vmercadi         ###   ########.fr       */
+/*   Created: 2017/12/10 23:01:49 by vmercadi          #+#    #+#             */
+/*   Updated: 2017/12/10 23:22:26 by vmercadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RTv1.h"
 
-void	error()
-{
+/*
+** Catch and throw the events
+*/
 
-}
-
-void	error_quit(int e)
+void	event()
 {
-	if (e == 1)
-		ft_putendl_fd("FAILED to init SDL" ,2);
+	// SDL_Event	event;
+
 }
