@@ -1,23 +1,55 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   event.c                                            :+:      :+:    :+:   */
+/*   vect_calc2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmercadi <vmercadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/10 23:01:49 by vmercadi          #+#    #+#             */
-/*   Updated: 2017/12/13 18:23:07 by vmercadi         ###   ########.fr       */
+/*   Created: 2017/12/13 18:37:05 by vmercadi          #+#    #+#             */
+/*   Updated: 2017/12/13 21:55:35 by vmercadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RTv1.h"
 
 /*
-** Catch and throw the events
+** Add two vectors
 */
 
-void	event()
+t_v		vect_addnb(t_v *v, double nb)
 {
-	// SDL_Event	event;
+	t_v		c;
 
+	c.x = v->x + nb;
+	c.y = v->y + nb;
+	c.z = v->z + nb;
+	return (c);
+}
+
+/*
+** Subtract 2 vectors
+*/
+
+t_v		vect_subnb(t_v *v, double nb)
+{
+	t_v		c;
+
+	c.x = v->x - nb;
+	c.y = v->y - nb;
+	c.z = v->z - nb;
+	return (c);
+}
+
+/*
+** Multiply 2 vectors
+*/
+
+t_v		vect_multnb(t_v *v, double nb)
+{
+	t_v		c;
+
+	c.x = v->x * nb;
+	c.y = v->y * nb;
+	c.z = v->z * nb;
+	return (c);
 }

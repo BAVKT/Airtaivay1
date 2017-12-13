@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   event.c                                            :+:      :+:    :+:   */
+/*   vect_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmercadi <vmercadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/10 23:01:49 by vmercadi          #+#    #+#             */
-/*   Updated: 2017/12/13 18:23:07 by vmercadi         ###   ########.fr       */
+/*   Created: 2017/12/13 19:00:15 by vmercadi          #+#    #+#             */
+/*   Updated: 2017/12/13 21:56:21 by vmercadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RTv1.h"
 
 /*
-** Catch and throw the events
+** Normalize a vector
 */
 
-void	event()
+int		vect_normalize(t_v *v)
 {
-	// SDL_Event	event;
-
+	return(ft_sqrt((v->x * v->x) + (v->y * v->y) + (v->z * v->z)));
 }
