@@ -19,18 +19,20 @@ void	draw(t_b *b)
 	int			y;
 	int			i;
 	int			j;
-	int color;
+	int 		color;
+
 	x = rand() % b->winx;
 	y = rand() % b->winy;
 	i = 0;
+	color = rand() % INT_MAX;
 	while (i++ < x)
 	{	
 		j = 0;
-		color = rand() % INT_MAX;
 		while (j++ < y)
-			*((unsigned int *)b->img->pixels + i * j + j) = color * 1;;
+			*((unsigned int *)b->img->pixels + y * i + j) = color * 1;;
 	}
 	SDL_UpdateWindowSurface(b->win);
+	// SDL_Delay(1000);
 }
 
 int main()
