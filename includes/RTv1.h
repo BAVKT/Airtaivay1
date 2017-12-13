@@ -15,6 +15,7 @@
 # include "libft.h"
 # include <SDL.h>
 # include <math.h>
+# include <limits.h>
 typedef struct				s_v
 {
 	double					x;
@@ -33,8 +34,7 @@ typedef struct				s_b
 {
 	struct s_cam			cam;
 	SDL_Window				*win;
-	SDL_Renderer			*rend;
-	SDL_Texture				*img;
+	SDL_Surface				*img;
 	int						winx;
 	int						winy;
 }							t_b;
