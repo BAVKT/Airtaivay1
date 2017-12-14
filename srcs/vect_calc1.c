@@ -6,7 +6,7 @@
 /*   By: vmercadi <vmercadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 18:03:13 by vmercadi          #+#    #+#             */
-/*   Updated: 2017/12/13 22:00:10 by vmercadi         ###   ########.fr       */
+/*   Updated: 2017/12/14 16:23:05 by vmercadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,19 +52,5 @@ t_v		vect_sub(t_v a, t_v b)
 	c.x = a.x - b.x;
 	c.y = a.y - b.y;
 	c.z = a.z - b.z;
-	return (c);
-}
-
-/*
-** Multiply 2 vectors
-*/
-
-t_v		vect_mult(t_v a, t_v b)
-{
-	t_v	c;
-
-	c.x = a.x * b.x;
-	c.y = a.y * b.y;
-	c.z = a.z * b.z;
 	return (c);
 }

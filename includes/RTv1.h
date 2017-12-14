@@ -6,7 +6,7 @@
 /*   By: vmercadi <vmercadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/08 18:44:32 by vmercadi          #+#    #+#             */
-/*   Updated: 2017/12/14 15:10:56 by vmercadi         ###   ########.fr       */
+/*   Updated: 2017/12/14 23:24:37 by vmercadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <SDL.h>
 # include <math.h>
 # include <limits.h>
-
+					#include <stdio.h>
 /*
 ** Vector struct
 */
@@ -34,13 +34,12 @@ typedef struct				s_v
 
 typedef struct				s_cam
 {
-	struct s_v				pos;
 	struct s_v				dir;
 	struct s_v				dirup;
 	struct s_v				dirright;
 	int						angle;
-}
-							t_cam;
+}							t_cam;
+
 /*
 ** Struct view plane - width/heigth/distance
 */
@@ -52,7 +51,7 @@ typedef	struct				s_vp
 	double					xi;
 	double					yi;
 	double					dist;
-	t_v						*upleft;
+	t_v						upleft;
 }							t_vp;
 
 /*
@@ -76,7 +75,7 @@ typedef struct				s_b
 void						init_b(t_b *b);
 void						init_vp(t_b *b);
 void						init_cam(t_cam *cam);
-void						init_vect(t_v *vect, int x, int y, int z);
+void						init_vect(t_v *vect, double x, double y, double z);
 
 /*
 **	Errors								| error.c
@@ -93,12 +92,18 @@ int							main();
 void						loop();
 void						ray(t_b *b);
 
+/*
+**	Utilitaries							| Utils.c
+*/
+
+double						draw_pixelvp(t_b *b, int x, int y, int color);
 
 /*
 ** Catch the events						| event.c
 */
 
 void						event();
+t_v							rotate_xy(t_v v, double angle);
 
 /*
 **	Basic math between vectors			| vect_valc1.c
@@ -107,20 +112,22 @@ void						event();
 t_v							vect_prod(t_v a, t_v b);
 t_v							vect_add(t_v a, t_v b);
 t_v							vect_sub(t_v a, t_v b);
-t_v							vect_mult(t_v a, t_v b);
 
 /*
 **	Basic math with vector & nb			| vect_calc2.c
 */
 
-t_v						vect_addnb(t_v *v, double nb);
-t_v						vect_subnb(t_v *v, double nb);
-t_v						vect_multnb(t_v *v, double nb);
+t_v							vect_addnb(t_v *v, double nb);
+t_v							vect_subnb(t_v *v, double nb);
+t_v							vect_multnb(t_v *v, double nb);
 
 /*
 ** Utilitaries about vectors			| vect_utils.c
 */
 
-int							vect_normalize(t_v *v);
+void						vect_normalize(t_v *v);
+double						vect_norme(t_v *v);
+void						vect_print(t_v v);
+
 
 #endif

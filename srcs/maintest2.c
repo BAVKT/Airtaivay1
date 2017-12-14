@@ -6,7 +6,7 @@
 /*   By: vmercadi <vmercadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 15:07:55 by vmercadi          #+#    #+#             */
-/*   Updated: 2017/12/14 15:20:12 by vmercadi         ###   ########.fr       */
+/*   Updated: 2017/12/14 22:02:23 by vmercadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,20 @@
 
 void	draw(t_b *b)
 {
+            // ft_putendlcolor("draw();", MAGENTA);
 	int			x;
 	int			y;
-	int			i;
-	int			j;
 	int 		color;
 
-	x = rand() % b->winx;
-	y = rand() % b->winy;
-	i = 0;
+	x = 0;
 	color = rand() % INT_MAX;
-	while (i++ < x)
+	while (x++ < b->winx)
 	{
-		j = 0;
-		while (j++ < y)
-			*((unsigned int *)b->img->pixels + y * i + j) = color * 1;
+		y = 0;
+		while (y++ < b->winy)
+			draw_pixelvp(b, x, y, 0xffffff);
 	}
 	SDL_UpdateWindowSurface(b->win);
-	// SDL_Delay(1000);
 }
 
 int main()
@@ -39,14 +35,31 @@ int main()
 	SDL_Event	event;
 	t_b			b;
 	int			fin;
+	double		angle;
 
 	fin = 0;
+	angle = 10.0 * M_PI / 180.0;
 	init_b(&b);
 	while (!fin)
 	{
 		while (SDL_PollEvent(&event))
+		{
+			ft_putendl("camdirup = ");
+			vect_print(b.cam.dirup);
+			ft_putendl("camdirright = ");
+			vect_print(b.cam.dirright);
 			if (event.type == SDL_QUIT)
 				fin = 1;
+			if (event.key.keysym.sym == SDLK_DOWN)
+				b.cam.dirup = rotate_xy(b.cam.dirup, -angle);
+			else if (event.key.keysym.sym == SDLK_UP)
+				b.cam.dirup = rotate_xy(b.cam.dirup, angle);
+			else if (event.key.keysym.sym == SDLK_RIGHT)
+				b.cam.dirright = rotate_xy(b.cam.dirright, angle);
+			else if (event.key.keysym.sym == SDLK_LEFT)
+				b.cam.dirright = rotate_xy(b.cam.dirright, -angle);
+			b.cam.dir = vect_prod(b.cam.dirup, b.cam.dirright);
+		}
 		draw(&b);
 	}
 	SDL_DestroyWindow(b.win);
@@ -57,14 +70,3 @@ int main()
 void	loop()
 {
 }
-
-void	ray(t_b *b)
-{
-	*b->vp.upleft = vect_sub(vect_add(b->cam.pos, vect_add(vect_multnb(&b->cam.dir, b->vp.dist),
-		vect_multnb(&b->cam.dirup, b->vp.h / 2))), vect_multnb(&b->cam.dirright, b->vp.w / 2));
-//Version presque OP je pense
-//b->vp.upleft = b->cam.pos + ((b->cam.dir * b->vp.dist) + (b->cam.dirup * (b->vp.h /2 ))) - (rightVec * (b->vp.w / 2))
-
-}
-
-
