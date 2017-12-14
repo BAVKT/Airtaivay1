@@ -6,7 +6,7 @@
 /*   By: vmercadi <vmercadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 18:12:09 by vmercadi          #+#    #+#             */
-/*   Updated: 2017/12/13 21:58:15 by vmercadi         ###   ########.fr       */
+/*   Updated: 2017/12/14 15:08:55 by vmercadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ void	init_vp(t_b *b)
 {
 	b->vp.w = 0.35;
 	b->vp.h = 0.5;
-	b->vp.xi = b->vp.w / winx;
-	b->vp.yi = b->vp.h / winy;
+	b->vp.xi = b->vp.w / b->winx;
+	b->vp.yi = b->vp.h / b->winy;
 	b->vp.dist = (b->winx / 2) / tan(b->cam.angle / 2);
 }
 
