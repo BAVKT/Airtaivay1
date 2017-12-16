@@ -6,7 +6,7 @@
 /*   By: vmercadi <vmercadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 19:00:15 by vmercadi          #+#    #+#             */
-/*   Updated: 2017/12/14 23:24:39 by vmercadi         ###   ########.fr       */
+/*   Updated: 2017/12/16 13:15:27 by vmercadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,20 @@ void		vect_normalize(t_v *v)
 	v->x /= n;
 	v->y /= n;
 	v->z /= n;
+}
+
+/*
+** Rotate the x and y of the vector
+*/
+
+t_v		vect_rotate_xy(t_v v, double angle)
+{
+			// ft_putendlcolor("vect_rotate_xy();", MAGENTA);
+	t_v tmp;
+
+	tmp.x = v.x * cos(angle) - v.y * sin(angle);
+	tmp.y = v.x * sin(angle) + v.y * cos(angle);
+	return (tmp);
 }
 
 /*

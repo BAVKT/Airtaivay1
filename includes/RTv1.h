@@ -6,7 +6,7 @@
 /*   By: vmercadi <vmercadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/08 18:44:32 by vmercadi          #+#    #+#             */
-/*   Updated: 2017/12/14 23:24:37 by vmercadi         ###   ########.fr       */
+/*   Updated: 2017/12/16 13:28:23 by vmercadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <limits.h>
 					#include <stdio.h>
 /*
-** Vector struct
+** struct for a basic vector
 */
 
 typedef struct				s_v
@@ -102,8 +102,9 @@ double						draw_pixelvp(t_b *b, int x, int y, int color);
 ** Catch the events						| event.c
 */
 
-void						event();
-t_v							rotate_xy(t_v v, double angle);
+int							event();
+t_v							ev_move(t_v v, int ev);
+void						ev_rotate_xy(t_b *b, int ev);
 
 /*
 **	Basic math between vectors			| vect_valc1.c
@@ -128,6 +129,6 @@ t_v							vect_multnb(t_v *v, double nb);
 void						vect_normalize(t_v *v);
 double						vect_norme(t_v *v);
 void						vect_print(t_v v);
-
+t_v							vect_rotate_xy(t_v v, double angle);
 
 #endif
